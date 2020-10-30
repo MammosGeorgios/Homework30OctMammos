@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,44 +18,59 @@ namespace DuoNumbersExample
             this.number1 = number1;
             this.number2 = number2;
         }
+        public DuoNumbers()
+        {
+            this.number1 = 0;
+            this.number2 = 1;
+        }
 
-        // Δεν κατάλαβα γιατί θέλουμε οι μέθοδοι να έχουν arguments αλλά να οι μέθοδοι όπως ζητήθηκαν
+
+        // change number1 and number 2 method
+        void UpdateNumbers (int n1, int n2)
+        {
+            this.number1 = n1;
+            this.number2 = n2;
+        }
+
         public int Add(int a, int b)
         {
-            return (a + b);
+            UpdateNumbers(a, b);
+            return (Add());
         }
         public int Sub(int a,int b)
         {
-            return (a - b);
+            UpdateNumbers(a, b);
+            return (Sub());
         }
         public int Mul(int a, int b)
         {
-            return (a * b);
+            UpdateNumbers(a, b);
+            return (Mul());
         }
         public int Div(int a, int b)
         {
-            if (b == 0) return (0);
-            else return (a / b);
+            UpdateNumbers(a, b);
+            return (Div());
         }
-
-        // Προσωπικά περίμενα να μας ζητηθεί το παρακάτω (θα χρησιμοποιήσω τις παραπάνω μεθόδους γιατί μπορώ! Αλλά νομίζω οτι δεν ήταν απαραίτητες
-        // για την λειτουργία που περιμένουμε από αυτή τη κλάση.) δηλαδή μέθοδοι χωρίς arguments
+        
+       // Σε περίπτωση που βάλω αρχικά νούμερα
 
         public int Add()
         {
-            return (Add(this.number1, this.number2));
+            return (this.number1 + this.number2);
         }
         public int Sub()
         {
-            return (Sub(this.number1, this.number2));
+            return (this.number1 - this.number2);
         }
         public int Mul()
         {
-            return (Mul(this.number1, this.number2));
+            return (this.number1 * this.number2);
         }
         public int Div()
         {
-            return (Div(this.number1, this.number2));
+            if (this.number2 == 0) return (this.number1 / 1);
+            else return (this.number1 / this.number2);
         }
 
         // Print μέθοδοι
@@ -76,7 +92,7 @@ namespace DuoNumbersExample
         }
         public void PrintDiv()
         {
-            if (number2 == 0) Console.WriteLine("I can't divide with zero!");
+            if (number2 == 0) Console.WriteLine($"{number1} / {number2} = {Div()} - You tried to divide with zero!");
             else Console.WriteLine($"{number1} + {number2} = {Div()}");
         }
 

@@ -11,6 +11,7 @@ namespace DuoNumbersExample
         static void Main(string[] args)
         {
             Example(12312, 34);
+            Example(34243, 0);
         }
 
         static void Example(int a, int b)
